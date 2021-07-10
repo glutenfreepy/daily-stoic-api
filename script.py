@@ -1,7 +1,8 @@
 from datetime import date
+import datetime
 
-
-today_mo = date.today().month
+today = datetime.datetime.now()
+today_mo = (today_mo.strftime("%B"))
 today_day = date.today().day
 today_str = str(today_mo) + str(today_day)
 

@@ -1,0 +1,33 @@
+HOW TO INSERT:
+dailystoics.insert({"key": "july11", "title": "THE START-UP OF YOU"})
+
+HOW TO GET:
+j11 = dailystoics.get("july11")
+>>> print(j11)
+{'key': 'july11', 'title': 'THE START-UP OF YOU'}
+
+HOW TO GET THE TITLE:
+>>> print(j11['title'])
+THE START-UP OF YOU
+
+
+(.venv) lacnsedgcentos[daily-slack-message]$ python3
+Python 3.9.1 (default, Feb 15 2021, 12:54:41)
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from deta import Deta
+
+>>> deta = Deta("PROJECT_KEY")
+
+>>> dailystoics = deta.Base("dailystoics")
+
+>>> dailystoics.insert({"day": "july11", "title": "THE START-UP OF YOU"})
+{'day': 'july11', 'key': 'cffxjkb1obwg', 'title': 'THE START-UP OF YOU'}
+
+>>> dailystoics.insert({"day": "july12", "title": "SOME SIMPLE RULES"})
+{'day': 'july12', 'key': 's9klhvk3cmmr', 'title': 'SOME SIMPLE RULES'}
+
+>>> dailystoics.insert({"day": "july13", "title": "A LEADER LEADS"})
+{'day': 'july13', 'key': 'wrg3ujjs99yg', 'title': 'A LEADER LEADS'}
+
+>>>
