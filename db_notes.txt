@@ -30,4 +30,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> dailystoics.insert({"day": "july13", "title": "A LEADER LEADS"})
 {'day': 'july13', 'key': 'wrg3ujjs99yg', 'title': 'A LEADER LEADS'}
 
->>>
+today = datetime.datetime.now()
+today_month = (today.strftime("%B"))
+today_day = date.today().day
+msg_id = str.lower(today_month) + str(today_day)
