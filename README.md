@@ -1,4 +1,6 @@
-# daily-slack-message
-Use the Slack API to post a daily message to your slack channel
+## daily-stoic-api
 
-Daily message are loaded from a pre-populated database
+Get the title of the daily meditation from the book, "The Daily Stoic" like this:
+https://b40gp3.deta.dev/thedailystoic/july11
+
+Enjoy!
