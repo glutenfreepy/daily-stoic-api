@@ -1,22 +1,26 @@
 from decouple import config
 
 from deta import Deta
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 DETA_PROJECT_KEY = config('DETA_PROJECT_KEY')
-DB_NAME = config('DB_NAME')
+DB_NAME = config('DETA_DB_NAME')
 
-deta = Deta(DETA_PROJECT_KEY)
-db = deta.Base('DB_NAME')
+dbkey = DETA_PROJECT_KEY
+dbname = DB_NAME
+
+deta = Deta(dbkey)
+db = deta.Base(dbname)
+
 app = FastAPI()
 
 
-@app.get("/", status_code=200)
-def get_hello():
-    return {"Hello": "World"}
-
-
-@app.get("/dailystoic/<key>")
-def get_stoic_of_the_day(key):
-    dailystoic = dailystoics.get(key)
-    return dailystoic if dailystoic else jsonify({"error": "Not found"}, 404)
+@app.get("/thedailystoic/{key}", status_code=200)
+def get_stoic(key: str):
+    print(key)
+    print(dbkey)
+    print(dbname)
+    dailystoic = db.get(key)
+    if dailystoic is None:
+        raise HTTPException(status_code=404, detail="Not found")
+    return dailystoic
