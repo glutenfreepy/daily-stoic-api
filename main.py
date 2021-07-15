@@ -1,3 +1,4 @@
+from datetime import datetime,date
 from decouple import config
 
 from deta import Deta
@@ -18,8 +19,6 @@ app = FastAPI()
 @app.get("/thedailystoic/{key}", status_code=200)
 def get_stoic(key: str):
     print(key)
-    print(dbkey)
-    print(dbname)
     dailystoic = db.get(key)
     if dailystoic is None:
         raise HTTPException(status_code=404, detail="Not found")
