@@ -1,4 +1,3 @@
-from datetime import datetime,date
 from decouple import config
 
 from deta import Deta
@@ -7,11 +6,8 @@ from fastapi import FastAPI, HTTPException
 DETA_PROJECT_KEY = config('DETA_PROJECT_KEY')
 DB_NAME = config('DETA_DB_NAME')
 
-dbkey = DETA_PROJECT_KEY
-dbname = DB_NAME
-
-deta = Deta(dbkey)
-db = deta.Base(dbname)
+deta = Deta(DETA_PROJECT_KEY)
+db = deta.Base(DB_NAME)
 
 app = FastAPI()
 
