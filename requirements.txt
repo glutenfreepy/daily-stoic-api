@@ -8,3 +8,4 @@ python-decouple==3.4
 starlette==0.14.2
 typing-extensions==3.10.0.0
 uvicorn==0.14.0
+requests==2.26.0
