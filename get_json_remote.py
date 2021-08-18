@@ -1,5 +1,6 @@
 import requests
-
+import time
+from decouple import config
 from deta import Deta
 
 DETA_PROJECT_KEY = config('DETA_PROJECT_KEY')
@@ -15,6 +16,7 @@ if response.status_code == 200:
     data = response.json()
     for key in data:
         stoic_title = data.get(f"{key}", {}).get("title")
-        db.put({"title": f'"{stoic_title}"'}, {"key": f'"{key}"'})
+        db.put({"title": stoic_title, "key": key})
+        time.sleep(1)
 else:
     print(f'Bad Status Code: {response.status_code}')
