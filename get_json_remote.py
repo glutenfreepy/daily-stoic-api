@@ -10,9 +10,11 @@ db = deta.Base(DB_NAME)
 
 URL = "https://raw.githubusercontent.com/IshanMi/Stoicbot/master/pdf_parsing/Stoic_log.json"
 response = requests.get(URL)
-data = response.json()
 
-# TODO: load data into Deta Base (key, stoic_title)
-for key in data:
-    stoic_title = data.get(f"{key}", {}).get("title")
-    db.put({"title": f'"{stoic_title}"'}, {"key": f'"{key}"'})
+if response.status_code == 200:
+    data = response.json()
+    for key in data:
+        stoic_title = data.get(f"{key}", {}).get("title")
+        db.put({"title": f'"{stoic_title}"'}, {"key": f'"{key}"'})
+else:
+    print(f'Bad Status Code: {response.status_code}')
