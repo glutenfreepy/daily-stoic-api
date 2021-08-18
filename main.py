@@ -1,8 +1,7 @@
 from decouple import config
-
 from deta import Deta
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+
 
 DETA_PROJECT_KEY = config('DETA_PROJECT_KEY')
 DB_NAME = config('DETA_DB_NAME')
