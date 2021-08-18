@@ -1,3 +1,4 @@
+import re
 import requests
 from decouple import config
 from deta import Deta
@@ -13,8 +14,10 @@ response = requests.get(URL)
 
 if response.status_code == 200:
     data = response.json()
-    for key in data:
+    for key, val in data.items():
         stoic_title = data.get(f"{key}", {}).get("title")
+        key = key.replace(" ", "_")
+        # print(f"{key}\n{stoic_title}\n\b")
         db.put({"title": stoic_title, "key": key})
 else:
     print(f'Bad Status Code: {response.status_code}')
