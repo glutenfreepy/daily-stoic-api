@@ -14,15 +14,14 @@ response = requests.get(URL)
 if response.status_code == 200:
     data = response.json()
     for key, val in data.items():
-        if key:
+        if key == "":
+            db.put({"title": stoic_title})
+            print(f"{stoic_title}\n\b")
+        else:
             stoic_title = data.get(f"{key}", {}).get("title")
+            print(type(key))
             key = key.replace(" ", "_")
             db.put({"title": stoic_title, "key": key})
-            # print(f"{key}\n{stoic_title}\n\b")
-        else:
-            key = None
-            db.put({"title": stoic_title, "key": key})
-            # print(f"{key}\n{stoic_title}\n\b")
-
+            print(f"{key}\n{stoic_title}\n\b")
 else:
     print(f'Bad Status Code: {response.status_code}')
