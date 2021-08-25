@@ -2,7 +2,6 @@ from decouple import config
 from deta import Deta
 from fastapi import FastAPI, HTTPException
 
-
 DETA_PROJECT_KEY = config('DETA_PROJECT_KEY')
 DB_NAME = config('DETA_DB_NAME')
 
