@@ -1,3 +1,6 @@
+# Get the remote json file with the Daily Stoic data
+# and load it into your Deta Micro's database
+
 import requests
 from decouple import config
 from deta import Deta
@@ -14,6 +17,9 @@ response = requests.get(URL)
 if response.status_code == 200:
     data = response.json()
     for key, val in data.items():
+        # check json file for empty key entries and if found,
+        # only enter the title into the deta db.  deta will
+        # enter a key automically since one was not provided
         if key == "":
             db.put({"title": stoic_title})
         else:
