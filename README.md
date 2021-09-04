@@ -2,9 +2,9 @@
 API for serving the titles of daily meditations from the book "The Daily Stoic"
 
 Get all the titles like this:
-https://b40gp3.deta.dev/thedailystoic
+https://pdm1.deta.dev/thedailystoic/
 
 or
 
 Get the title of the day like this: 
-https://b40gp3.deta.dev/thedailystoic/February_22
+https://pdm1.deta.dev/thedailystoic/February_22
